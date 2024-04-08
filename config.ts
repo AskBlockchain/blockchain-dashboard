@@ -19,8 +19,8 @@ export const config = createConfig({
   connectors: [injected()],
   syncConnectedChain: false, 
   transports: {
-    [mainnet.id]: http(),
     [sepolia.id]: http(),
+    [mainnet.id]: http(),
     [polygon.id]: http(),
   },
 })
