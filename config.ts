@@ -1,5 +1,5 @@
-import { http, createConfig, cookieStorage, createStorage  } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+import { http, createConfig, cookieStorage, createStorage, type UseBalanceParameters } from 'wagmi'
+import { mainnet, sepolia, polygon } from 'wagmi/chains'
 import { createClient } from 'viem'
 import { injected } from 'wagmi/connectors'
 
@@ -14,5 +14,6 @@ export const config = createConfig({
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),
+    [polygon.id]: http(),
   },
 })

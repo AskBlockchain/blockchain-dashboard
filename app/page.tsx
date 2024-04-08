@@ -1,4 +1,5 @@
-import { Profile } from "./components/profile";
+import { Account } from "./components/Accounts";
+import { Profile } from "./components/Profile";
 
 
 export default function HomePage() {
@@ -7,6 +8,7 @@ export default function HomePage() {
       <h1>Hello World 🙂</h1>
       <h2>Hello 💜</h2>     
 
+      <Account />
       <Profile />
     
     </div>
