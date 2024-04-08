@@ -1,4 +1,5 @@
 import { Account } from "./components/Accounts";
+import { BlockInfo } from "./components/BlockInfo";
 import { Profile } from "./components/Profile";
 
 
@@ -10,6 +11,8 @@ export default function HomePage() {
 
       <Account />
       <Profile />
+      <BlockInfo />
+    
     
     </div>
 

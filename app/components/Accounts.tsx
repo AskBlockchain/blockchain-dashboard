@@ -2,12 +2,12 @@
 
 import { 
     useAccount, 
-    useDisconnect, 
-    useEnsAddress, 
+    useDisconnect,      
     useEnsName, 
     useEnsAvatar, 
     useConnect,
-    useBalance } from "wagmi"
+    useBalance,
+    } from "wagmi"
 import { injected } from 'wagmi/connectors'
 
 export const Account = () => {
@@ -16,7 +16,7 @@ export const Account = () => {
     const { data: ensName } = useEnsName({ address })
     const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
     const { connect } = useConnect()
-    const { data: balance } = useBalance({ address })
+    const { data: balance } = useBalance({ address })    
     console.log(balance)
     
 
@@ -27,7 +27,7 @@ export const Account = () => {
             </div>
         {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
         { address && <div>{ensName ? `${ensName} (${address})` : address}</div>}    
-        <div>Wallet Balance = {balance?.formatted.toString()} {balance?.symbol}</div>    
+        <div>Balance = {balance?.formatted} {balance?.symbol}</div>          
         <button onClick={() => disconnect()}>Disconnect</button>
         
         </div>
