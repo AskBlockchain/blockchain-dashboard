@@ -1,6 +1,7 @@
 import { Account } from "./components/Accounts";
 import { BlockInfo } from "./components/BlockInfo";
 import { Profile } from "./components/Profile";
+import { BlockNumber } from "./components/BlockNumber";
 
 
 export default function HomePage() {
@@ -11,7 +12,9 @@ export default function HomePage() {
 
       <Account />
       <Profile />
+      <BlockNumber />
       <BlockInfo />
+      
     
     
     </div>

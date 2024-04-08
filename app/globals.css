@@ -38,11 +38,11 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: .5px solid #8d8d918a;
   text-align: left;
   padding: 8px;
 }
 
 tr:nth-child(even) {
-  background-color: #9557dd;
+  background-color: #6173e96d;
 }
