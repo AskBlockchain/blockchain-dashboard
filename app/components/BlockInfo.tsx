@@ -1,40 +1,49 @@
 'use client'
 
 import { useBlock,  type UseBlockParameters } from 'wagmi'
-
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+  } from "@/components/ui/table"
 
 export const BlockInfo = () => {
-    const { data: blockData, isLoading, isError } = useBlock()
-   
-    const blockHash = blockData?.hash
-    const blockWithdrawlAddress = blockData?.withdrawals?.map(withdrawal => withdrawal.address) ?? []
-    const blockWithdrawlAmounts = blockData?.withdrawals?.map(withdrawal => withdrawal.amount) ?? []
+    const { data: blockData, isLoading, isError } = useBlock({
+        watch: true, 
+    })
+    const withdrawals = blockData?.withdrawals ?? [];
+    const blockWithdrawals = withdrawals.map(({ validatorIndex, address, amount }) => ({ validatorIndex, address, amount }))
 
-    console.log(blockWithdrawlAddress, blockWithdrawlAmounts, blockData)
+    console.log(blockWithdrawals, blockData)
 
     if (isLoading) return <div>Loading...</div>;
     if (isError) return <div>Error fetching block</div>;     
     return (
-        <div>
-            <h1>Block Hash = {blockHash}</h1>
-            <table>
-      <thead>
-        <tr>
-          <th>Address</th>
-          <th>Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        {blockWithdrawlAddress.map((address, index) => (
-          <tr key={index}>
-            <td>{address}</td>            
-            <td>{BigInt(blockWithdrawlAmounts[index]).toString()}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-            
-        </div>
+        <Table>
+  <TableCaption>A list of Validator Withdrawals from the Beacon Chain</TableCaption>
+  <TableHeader>
+    <TableRow>      
+      <TableHead>Validator Index</TableHead>
+      <TableHead>Address</TableHead>     
+      <TableHead className="text-right">Amount Withdrawn (ETH)</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+  {blockWithdrawals.map((blockWithdrawals, validatorIndex) => (
+           <TableRow className="font-medium" key={validatorIndex}>
+            <TableCell>{blockWithdrawals.validatorIndex}</TableCell>
+            <TableCell>{blockWithdrawals.address}</TableCell>  
+            <TableCell className="text-right">{blockWithdrawals.amount}</TableCell> 
+            </TableRow>
+        ))}    
+  </TableBody>
+</Table>
+
+ 
     )
 }
   

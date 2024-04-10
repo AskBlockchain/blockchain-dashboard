@@ -1,20 +1,22 @@
 'use client'
 
-
-import { truncate, watch } from 'fs'
+import { dataTagSymbol } from '@tanstack/react-query'
+import { mainnet } from 'viem/chains'
 import { useBlockNumber } from 'wagmi'
 
 export const BlockNumber = () => {
     const { data: blockData } = useBlockNumber({
-        watch: true
+        watch: true,        
     })
 
     const blockNumber = blockData?.toString()
-
+    
     console.log(blockNumber)
 
     return (
-        <div><h1>The Current Block Number is {blockNumber}</h1></div>
+        <div>
+            <h1>Current Block Number = {blockNumber}</h1>            
+        </div>
     )
 }
 

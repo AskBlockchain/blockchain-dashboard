@@ -7,8 +7,8 @@ import { BlockNumber } from "./components/BlockNumber";
 export default function HomePage() {
   return (
     <div>
-      <h1>Hello World 🙂</h1>
-      <h2>Hello 💜</h2>     
+      <h1 className="text-3xl font-bold underline">Hello World 🙂</h1>
+      <h2 className="text-3xl font-bold underline">Hello 💜</h2>     
 
       <Account />
       <Profile />
